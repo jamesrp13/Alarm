@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alarmCell" rowHeight="100" id="jdw-7s-g8d">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alarmCell" rowHeight="100" id="jdw-7s-g8d" customClass="AlarmTableViewCell" customModule="Alarm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jdw-7s-g8d" id="Znj-98-D1q">
@@ -48,6 +48,9 @@
                                                 </stackView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m2m-j2-l4x">
                                                     <rect key="frame" x="255" y="27" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="jdw-7s-g8d" eventType="valueChanged" id="30x-T6-ojp"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </stackView>
@@ -60,6 +63,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="alarmSwitch" destination="m2m-j2-l4x" id="rkd-cj-RmR"/>
+                                    <outlet property="nameLabel" destination="2ge-jy-HAs" id="mpw-gH-FEp"/>
+                                    <outlet property="timeLabel" destination="LEh-Qn-5Pt" id="H5D-Us-rTo"/>
                                     <segue destination="7NB-ZN-8QJ" kind="show" identifier="toAlarmDetail" trigger="accessoryAction" id="2U2-9j-rkY"/>
                                 </connections>
                             </tableViewCell>

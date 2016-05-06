@@ -12,6 +12,7 @@
 		1A0FB7841CDD4F07006808D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0FB7821CDD4F07006808D9 /* Main.storyboard */; };
 		1A0FB7861CDD4F07006808D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0FB7851CDD4F07006808D9 /* Assets.xcassets */; };
 		1A0FB7891CDD4F07006808D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0FB7871CDD4F07006808D9 /* LaunchScreen.storyboard */; };
+		1A0FB7911CDD51B7006808D9 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0FB7901CDD51B7006808D9 /* AlarmTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1A0FB7851CDD4F07006808D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A0FB7881CDD4F07006808D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A0FB78A1CDD4F07006808D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A0FB7901CDD51B7006808D9 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				1A0FB77E1CDD4F07006808D9 /* AppDelegate.swift */,
 				1A0FB7801CDD4F07006808D9 /* ViewController.swift */,
 				1A0FB7821CDD4F07006808D9 /* Main.storyboard */,
+				1A0FB7901CDD51B7006808D9 /* AlarmTableViewCell.swift */,
 				1A0FB7851CDD4F07006808D9 /* Assets.xcassets */,
 				1A0FB7871CDD4F07006808D9 /* LaunchScreen.storyboard */,
 				1A0FB78A1CDD4F07006808D9 /* Info.plist */,
@@ -137,6 +140,7 @@
 			files = (
 				1A0FB7811CDD4F07006808D9 /* ViewController.swift in Sources */,
 				1A0FB77F1CDD4F07006808D9 /* AppDelegate.swift in Sources */,
+				1A0FB7911CDD51B7006808D9 /* AlarmTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
