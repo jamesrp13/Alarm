@@ -10,7 +10,7 @@
         <!--Alarm-->
         <scene sceneID="9WD-gr-VcU">
             <objects>
-                <tableViewController id="NcR-n3-yAE" sceneMemberID="viewController">
+                <tableViewController id="NcR-n3-yAE" customClass="AlarmListTableViewController" customModule="Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="hYK-hr-0Ic">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="1148" y="360"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Alarm Detail Table View Controller-->
         <scene sceneID="sfi-Nj-7hu">
             <objects>
-                <tableViewController id="7NB-ZN-8QJ" sceneMemberID="viewController">
+                <tableViewController id="7NB-ZN-8QJ" customClass="AlarmDetailTableViewController" customModule="Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GoK-Eh-D8s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
