@@ -10,6 +10,10 @@ import UIKit
 
 class AlarmDetailTableViewController: UITableViewController {
 
+    @IBOutlet weak var alarmDatePicker: UIDatePicker!
+    @IBOutlet weak var alarmTitleTextField: UITextField!
+    @IBOutlet weak var enableButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +41,12 @@ class AlarmDetailTableViewController: UITableViewController {
         return 0
     }
 
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+    }
+    
+    @IBAction func enableButtonTapped(sender: AnyObject) {
+    }
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
