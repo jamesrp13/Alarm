@@ -32,7 +32,8 @@ class Alarm {
         components.minute = 0
         components.hour = 0
         components.nanosecond = 0
-        return NSDate(timeInterval: 24*60*60, sinceDate: calendar.dateFromComponents(components) ?? NSDate())
+        guard let date = calendar.dateFromComponents(components) else {return nil}
+        return NSDate(timeInterval: 24*60*60, sinceDate: date)
     }
     
     var fireDate: NSDate? {
