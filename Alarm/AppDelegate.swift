@@ -48,15 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let action = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
         alert.addAction(action)
         window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-        guard let userInfo = notification.userInfo,
-            alarmDictionary = userInfo["alarm"] as? [String: AnyObject],
-            alarm = Alarm(dictionary: alarmDictionary) else {return}
-        let localNotification = UILocalNotification()
-        localNotification.userInfo = ["alarm": alarm.dictionaryCopy]
-        localNotification.alertBody = "Time's up!"
-        localNotification.alertTitle = "Time's up!"
-        localNotification.fireDate = alarm.fireDate
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
 
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlarmDetailTableViewController: UITableViewController {
+class AlarmDetailTableViewController: UITableViewController, AlarmScheduler {
 
     @IBOutlet weak var alarmDatePicker: UIDatePicker!
     @IBOutlet weak var alarmTitleTextField: UITextField!
@@ -21,10 +21,10 @@ class AlarmDetailTableViewController: UITableViewController {
         if let alarm = alarm {
             updateWithAlarm(alarm)
         } 
-        setView()
+        setupView()
     }
 
-    func setView() {
+    func setupView() {
         if alarm == nil {
             enableButton.hidden = true
         } else {
@@ -69,30 +69,8 @@ class AlarmDetailTableViewController: UITableViewController {
         } else {
             scheduleLocalNotification(alarm)
         }
-        AlarmController.sharedInstance.alarmEnabledValueShouldChange(alarm)
-        setView()
-    }
-    
-    func scheduleLocalNotification(alarm: Alarm) {
-        let localNotification = UILocalNotification()
-        localNotification.userInfo = ["alarm": alarm.dictionaryCopy]
-        localNotification.alertBody = "Time's up!"
-        localNotification.alertTitle = "Time's up!"
-        localNotification.fireDate = alarm.fireDate
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-    }
-    
-    func cancelLocalNotification(alarm: Alarm) {
-        guard let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {return}
-        let localNotificationsForThisAlarm = localNotifications.filter { (notification) -> Bool in
-            guard let userInfo = notification.userInfo,
-                alarmDictionary = userInfo["alarm"] as? [String: AnyObject],
-                thisAlarm = Alarm(dictionary: alarmDictionary) else {return false}
-            return alarm == thisAlarm
-        }
-        for notification in localNotificationsForThisAlarm {
-            UIApplication.sharedApplication().cancelLocalNotification(notification)
-        }
+        AlarmController.sharedInstance.toggleEnabled(alarm)
+        setupView()
     }
 
 }

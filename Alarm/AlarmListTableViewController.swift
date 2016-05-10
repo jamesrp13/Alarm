@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlarmListTableViewController: UITableViewController, AlarmTableViewCellDelegate {
+class AlarmListTableViewController: UITableViewController, AlarmTableViewCellDelegate, AlarmScheduler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,45 +54,18 @@ class AlarmListTableViewController: UITableViewController, AlarmTableViewCellDel
         } else {
             scheduleLocalNotification(alarm)
         }
-        AlarmController.sharedInstance.alarmEnabledValueShouldChange(alarm)
+        AlarmController.sharedInstance.toggleEnabled(alarm)
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    }
-    
-    func scheduleLocalNotification(alarm: Alarm) {
-        let localNotification = UILocalNotification()
-        localNotification.userInfo = ["alarm": alarm.dictionaryCopy]
-        localNotification.alertBody = "Time's up!"
-        localNotification.alertTitle = "Time's up!"
-        localNotification.fireDate = alarm.fireDate
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-    }
-    
-    func cancelLocalNotification(alarm: Alarm) {
-        guard let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {return}
-        let localNotificationsForThisAlarm = localNotifications.filter { (notification) -> Bool in
-            guard let userInfo = notification.userInfo,
-                alarmDictionary = userInfo["alarm"] as? [String: AnyObject],
-                thisAlarm = Alarm(dictionary: alarmDictionary) else {return false}
-            return alarm == thisAlarm
-        }
-        for notification in localNotificationsForThisAlarm {
-            UIApplication.sharedApplication().cancelLocalNotification(notification)
-        }
     }
     
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let detailVC = segue.destinationViewController as? AlarmDetailTableViewController
-        switch segue.identifier ?? "" {
-        case "toAlarmDetail":
+        if segue.identifier == "toAlarmDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             let alarm = AlarmController.sharedInstance.alarms[indexPath.row]
             detailVC?.alarm = alarm
-        case "toNewAlarm":
-            break
-        default:
-            break
         }
     }
     

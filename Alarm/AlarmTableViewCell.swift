@@ -16,17 +16,6 @@ class AlarmTableViewCell: UITableViewCell {
     
     weak var delegate: AlarmTableViewCellDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     @IBAction func switchValueChanged(sender: AnyObject) {
         delegate?.alarmCellSwitchValueChanged(self)
     }
