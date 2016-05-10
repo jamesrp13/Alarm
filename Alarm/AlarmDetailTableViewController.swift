@@ -27,6 +27,17 @@ class AlarmDetailTableViewController: UITableViewController {
     func setView() {
         if alarm == nil {
             enableButton.hidden = true
+        } else {
+            enableButton.hidden = false
+            if alarm?.enabled == true {
+                enableButton.setTitle("Disable", forState: .Normal)
+                enableButton.setTitleColor(.whiteColor(), forState: .Normal)
+                enableButton.backgroundColor = .redColor()
+            } else {
+                enableButton.setTitle("Enable", forState: .Normal)
+                enableButton.setTitleColor(.blueColor(), forState: .Normal)
+                enableButton.backgroundColor = .grayColor()
+            }
         }
     }
     
@@ -37,10 +48,45 @@ class AlarmDetailTableViewController: UITableViewController {
     }
 
     @IBAction func saveButtonTapped(sender: AnyObject) {
+        guard let title = alarmTitleTextField.text,
+            thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else {return}
+        let timeIntervalSinceMidnight = alarmDatePicker.date.timeIntervalSinceDate(thisMorningAtMidnight)
+        if let alarm = alarm {
+            AlarmController.sharedInstance.updateAlarm(alarm, fireTimeFromMidnight: timeIntervalSinceMidnight, name: title)
+        } else {
+            let alarm = AlarmController.sharedInstance.addAlarm(timeIntervalSinceMidnight, name: title)
+            self.alarm = alarm
+            scheduleLocalNotification(alarm)
+        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func enableButtonTapped(sender: AnyObject) {
-        
+        guard let alarm = alarm else {return}
+        if alarm.enabled {
+            cancelLocalNotification(alarm)
+        } else {
+            scheduleLocalNotification(alarm)
+        }
+        AlarmController.sharedInstance.alarmEnabledValueShouldChange(alarm)
+        setView()
+    }
+    
+    func scheduleLocalNotification(alarm: Alarm) {
+        let localNotification = UILocalNotification()
+        localNotification.category = "\(alarm.fireDate)"
+        localNotification.alertBody = "Time's up!"
+        localNotification.alertTitle = "Time's up!"
+        localNotification.fireDate = alarm.fireDate
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
+    func cancelLocalNotification(alarm: Alarm) {
+        guard let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {return}
+        let localNotificationsForThisAlarm = localNotifications.filter {$0.category == alarm.fireDate}
+        for notification in localNotificationsForThisAlarm {
+            UIApplication.sharedApplication().cancelLocalNotification(notification)
+        }
     }
 
 }

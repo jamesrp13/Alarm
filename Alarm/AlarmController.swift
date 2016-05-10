@@ -19,13 +19,18 @@ class AlarmController {
         alarms.removeAtIndex(index)
     }
     
-    func addAlarm(fireTimeFromMidnight: NSTimeInterval, name: String) {
+    func addAlarm(fireTimeFromMidnight: NSTimeInterval, name: String) -> Alarm {
         let alarm = Alarm(fireTimeFromMidnight: fireTimeFromMidnight, name: name)
         alarms.append(alarm)
+        return alarm
     }
     
     func updateAlarm(alarm: Alarm, fireTimeFromMidnight: NSTimeInterval, name: String) {
         alarm.fireTimeFromMidnight = fireTimeFromMidnight
         alarm.name = name
+    }
+    
+    func alarmEnabledValueShouldChange(alarm: Alarm) {
+        alarm.enabled = !alarm.enabled
     }
 }
