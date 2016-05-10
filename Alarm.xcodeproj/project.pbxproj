@@ -16,6 +16,7 @@
 		1A0FB7951CDD5255006808D9 /* AlarmDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0FB7941CDD5255006808D9 /* AlarmDetailTableViewController.swift */; };
 		1A0FB7971CDD56B4006808D9 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0FB7961CDD56B4006808D9 /* Alarm.swift */; };
 		1A0FB7BD1CE18BB6006808D9 /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0FB7BC1CE18BB6006808D9 /* AlarmController.swift */; };
+		1A0FB7BF1CE19229006808D9 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0FB7BE1CE19229006808D9 /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1A0FB7941CDD5255006808D9 /* AlarmDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmDetailTableViewController.swift; sourceTree = "<group>"; };
 		1A0FB7961CDD56B4006808D9 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		1A0FB7BC1CE18BB6006808D9 /* AlarmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
+		1A0FB7BE1CE19229006808D9 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				1A0FB7921CDD5235006808D9 /* AlarmListTableViewController.swift */,
 				1A0FB7941CDD5255006808D9 /* AlarmDetailTableViewController.swift */,
 				1A0FB7961CDD56B4006808D9 /* Alarm.swift */,
+				1A0FB7BE1CE19229006808D9 /* DateHelper.swift */,
 				1A0FB7BC1CE18BB6006808D9 /* AlarmController.swift */,
 				1A0FB7901CDD51B7006808D9 /* AlarmTableViewCell.swift */,
 				1A0FB7851CDD4F07006808D9 /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 				1A0FB7951CDD5255006808D9 /* AlarmDetailTableViewController.swift in Sources */,
 				1A0FB7911CDD51B7006808D9 /* AlarmTableViewCell.swift in Sources */,
 				1A0FB7971CDD56B4006808D9 /* Alarm.swift in Sources */,
+				1A0FB7BF1CE19229006808D9 /* DateHelper.swift in Sources */,
 				1A0FB7BD1CE18BB6006808D9 /* AlarmController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
