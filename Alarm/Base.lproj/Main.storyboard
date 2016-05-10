@@ -88,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="1148" y="360"/>
         </scene>
-        <!--Alarm-->
+        <!--New Alarm-->
         <scene sceneID="sfi-Nj-7hu">
             <objects>
                 <tableViewController id="7NB-ZN-8QJ" customClass="AlarmDetailTableViewController" customModule="Alarm" customModuleProvider="target" sceneMemberID="viewController">
@@ -190,7 +190,7 @@
                             <outlet property="delegate" destination="7NB-ZN-8QJ" id="VK6-SQ-iIz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Alarm" id="Xli-Z0-nzC">
+                    <navigationItem key="navigationItem" title="New Alarm" id="Xli-Z0-nzC">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="l3S-1B-rzE">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="7NB-ZN-8QJ" id="iPF-r9-oEd"/>

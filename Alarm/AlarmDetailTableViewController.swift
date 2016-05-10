@@ -20,7 +20,7 @@ class AlarmDetailTableViewController: UITableViewController {
         super.viewDidLoad()
         if let alarm = alarm {
             updateWithAlarm(alarm)
-        }
+        } 
         setView()
     }
 
@@ -45,6 +45,7 @@ class AlarmDetailTableViewController: UITableViewController {
         guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else {return}
         alarmDatePicker.setDate(NSDate(timeInterval: alarm.fireTimeFromMidnight, sinceDate: thisMorningAtMidnight), animated: false)
         alarmTitleTextField.text = alarm.name
+        self.title = alarm.name
     }
 
     @IBAction func saveButtonTapped(sender: AnyObject) {

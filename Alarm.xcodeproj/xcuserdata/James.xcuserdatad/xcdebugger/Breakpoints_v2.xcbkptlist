@@ -9,46 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Alarm/Alarm.swift"
-            timestampString = "484549119.266649"
+            filePath = "Alarm/AlarmDetailTableViewController.swift"
+            timestampString = "484549541.462083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "Alarm"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Alarm.Alarm.fireDate.getter : Swift.Optional&lt;__ObjC.NSDate&gt;"
-                  moduleName = "Alarm"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/James/Desktop/Alarm/Alarm/Alarm.swift"
-                  timestampString = "484548060.034756"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "15">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Alarm.Alarm.fireDate.getter : Swift.Optional&lt;__ObjC.NSDate&gt;"
-                  moduleName = "Alarm"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/James/Desktop/Alarm/Alarm/Alarm.swift"
-                  timestampString = "484548060.034859"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "scheduleLocalNotification(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -57,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Alarm/AppDelegate.swift"
-            timestampString = "484549110.569924"
+            filePath = "Alarm/AlarmDetailTableViewController.swift"
+            timestampString = "484549732.642437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "application(_:didReceiveLocalNotification:)"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "setView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

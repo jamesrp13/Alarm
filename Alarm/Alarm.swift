@@ -22,7 +22,7 @@ class Alarm: Equatable {
     
     var fireDate: NSDate? {
         guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight,
-            tomorrowMorningAtMidnight = DateHelper.tomorrowMorningAtMidnight where enabled else {return nil}
+            tomorrowMorningAtMidnight = DateHelper.tomorrowMorningAtMidnight else {return nil}
         let fireDateFromThisMorning = NSDate(timeInterval: fireTimeFromMidnight, sinceDate: thisMorningAtMidnight)
         let fireDateFromTomorrowMorning = NSDate(timeInterval: fireTimeFromMidnight, sinceDate: tomorrowMorningAtMidnight)
         if fireDateFromThisMorning.compare(NSDate()) == .OrderedAscending {
