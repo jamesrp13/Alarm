@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Alarm {
+class Alarm: Equatable {
     var fireTimeFromMidnight: NSTimeInterval
     var name: String
     var enabled: Bool
@@ -48,9 +48,13 @@ class Alarm {
         }
     }
     
-    init(fireTimeFromMidnight: NSTimeInterval, name: String, enabled: Bool = false) {
+    init(fireTimeFromMidnight: NSTimeInterval, name: String, enabled: Bool = true) {
         self.fireTimeFromMidnight = fireTimeFromMidnight
         self.name = name
         self.enabled = enabled
     }
+}
+
+func ==(lhs: Alarm, rhs: Alarm) -> Bool {
+    return lhs.fireTimeFromMidnight == rhs.fireTimeFromMidnight
 }

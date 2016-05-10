@@ -27,5 +27,9 @@ class AlarmTableViewCell: UITableViewCell {
     
     @IBAction func switchValueChanged(sender: AnyObject) {
     }
+    
+    func updateWithAlarm(alarm: Alarm) {
+        
+    }
 
 }
