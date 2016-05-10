@@ -13,21 +13,6 @@ class AlarmController {
     static let sharedInstance = AlarmController()
     
     var alarms: [Alarm] = []
-    weak var delegate: AlarmControllerDelegate? {
-        didSet {
-            guard let delegate = delegate,
-                alarm = delegate.alarm else {return}
-            observeAlarm(alarm)
-        }
-    }
-    
-    func observeAlarm(alarm: Alarm) {
-        guard let delegate = delegate else {return}
-        delegate.alarmSecondTick()
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC*1)), dispatch_get_main_queue()) {
-            self.observeAlarm(alarm)
-        }
-    }
     
     func deleteAlarm(alarm: Alarm) {
         guard let index = alarms.indexOf(alarm) else {return}
@@ -43,9 +28,4 @@ class AlarmController {
         alarm.fireTimeFromMidnight = fireTimeFromMidnight
         alarm.name = name
     }
-}
-
-protocol AlarmControllerDelegate: class {
-    var alarm: Alarm? {get set}
-    func alarmSecondTick()
 }

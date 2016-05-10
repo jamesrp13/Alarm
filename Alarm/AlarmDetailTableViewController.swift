@@ -18,14 +18,22 @@ class AlarmDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViewForAlarm()
+        if let alarm = alarm {
+            updateWithAlarm(alarm)
+        }
+        setView()
     }
 
-    func updateViewForAlarm() {
-        if let alarm = alarm {
-            NSDate(
-            alarmDatePicker.setDate(, animated: <#T##Bool#>)
+    func setView() {
+        if alarm == nil {
+            enableButton.hidden = true
         }
+    }
+    
+    func updateWithAlarm(alarm: Alarm) {
+        guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else {return}
+        alarmDatePicker.setDate(NSDate(timeInterval: alarm.fireTimeFromMidnight, sinceDate: thisMorningAtMidnight), animated: false)
+        alarmTitleTextField.text = alarm.name
     }
 
     @IBAction func saveButtonTapped(sender: AnyObject) {
