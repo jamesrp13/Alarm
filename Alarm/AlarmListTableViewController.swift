@@ -8,11 +8,16 @@
 
 import UIKit
 
-class AlarmListTableViewController: UITableViewController {
+class AlarmListTableViewController: UITableViewController, AlarmTableViewCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -26,6 +31,7 @@ class AlarmListTableViewController: UITableViewController {
         
         let alarm = AlarmController.sharedInstance.alarms[indexPath.row]
         cell.updateWithAlarm(alarm)
+        cell.delegate = self
         
         return cell
     }
@@ -34,8 +40,43 @@ class AlarmListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let alarm = AlarmController.sharedInstance.alarms[indexPath.row]
+            cancelLocalNotification(alarm)
             AlarmController.sharedInstance.deleteAlarm(alarm)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+    
+    func alarmCellSwitchValueChanged(cell: AlarmTableViewCell) {
+        guard let indexPath = tableView.indexPathForCell(cell) else {return}
+        let alarm = AlarmController.sharedInstance.alarms[indexPath.row]
+        if alarm.enabled {
+            cancelLocalNotification(alarm)
+        } else {
+            scheduleLocalNotification(alarm)
+        }
+        AlarmController.sharedInstance.alarmEnabledValueShouldChange(alarm)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+    
+    func scheduleLocalNotification(alarm: Alarm) {
+        let localNotification = UILocalNotification()
+        localNotification.userInfo = ["alarm": alarm.dictionaryCopy]
+        localNotification.alertBody = "Time's up!"
+        localNotification.alertTitle = "Time's up!"
+        localNotification.fireDate = alarm.fireDate
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
+    func cancelLocalNotification(alarm: Alarm) {
+        guard let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {return}
+        let localNotificationsForThisAlarm = localNotifications.filter { (notification) -> Bool in
+            guard let userInfo = notification.userInfo,
+                alarmDictionary = userInfo["alarm"] as? [String: AnyObject],
+                thisAlarm = Alarm(dictionary: alarmDictionary) else {return false}
+            return alarm == thisAlarm
+        }
+        for notification in localNotificationsForThisAlarm {
+            UIApplication.sharedApplication().cancelLocalNotification(notification)
         }
     }
     

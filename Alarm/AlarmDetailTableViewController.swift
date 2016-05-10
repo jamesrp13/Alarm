@@ -74,7 +74,7 @@ class AlarmDetailTableViewController: UITableViewController {
     
     func scheduleLocalNotification(alarm: Alarm) {
         let localNotification = UILocalNotification()
-        localNotification.category = "\(alarm.fireDate)"
+        localNotification.userInfo = ["alarm": alarm.dictionaryCopy]
         localNotification.alertBody = "Time's up!"
         localNotification.alertTitle = "Time's up!"
         localNotification.fireDate = alarm.fireDate
@@ -83,7 +83,12 @@ class AlarmDetailTableViewController: UITableViewController {
     
     func cancelLocalNotification(alarm: Alarm) {
         guard let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {return}
-        let localNotificationsForThisAlarm = localNotifications.filter {$0.category == alarm.fireDate}
+        let localNotificationsForThisAlarm = localNotifications.filter { (notification) -> Bool in
+            guard let userInfo = notification.userInfo,
+                alarmDictionary = userInfo["alarm"] as? [String: AnyObject],
+                thisAlarm = Alarm(dictionary: alarmDictionary) else {return false}
+            return alarm == thisAlarm
+        }
         for notification in localNotificationsForThisAlarm {
             UIApplication.sharedApplication().cancelLocalNotification(notification)
         }

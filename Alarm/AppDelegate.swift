@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         return true
     }
 
@@ -39,6 +41,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        let alert = UIAlertController(title: "Time's up", message: nil, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
+        alert.addAction(action)
+        window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        guard let userInfo = notification.userInfo,
+            alarmDictionary = userInfo["alarm"] as? [String: AnyObject],
+            alarm = Alarm(dictionary: alarmDictionary) else {return}
+        let localNotification = UILocalNotification()
+        localNotification.userInfo = ["alarm": alarm.dictionaryCopy]
+        localNotification.alertBody = "Time's up!"
+        localNotification.alertTitle = "Time's up!"
+        localNotification.fireDate = alarm.fireDate
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
 
 

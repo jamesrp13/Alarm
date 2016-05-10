@@ -66,7 +66,7 @@
                                     <outlet property="alarmSwitch" destination="m2m-j2-l4x" id="rkd-cj-RmR"/>
                                     <outlet property="nameLabel" destination="2ge-jy-HAs" id="mpw-gH-FEp"/>
                                     <outlet property="timeLabel" destination="LEh-Qn-5Pt" id="H5D-Us-rTo"/>
-                                    <segue destination="7NB-ZN-8QJ" kind="show" identifier="toAlarmDetail" trigger="accessoryAction" id="2U2-9j-rkY"/>
+                                    <segue destination="7NB-ZN-8QJ" kind="show" identifier="toAlarmDetail" id="bSS-7k-x1K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -106,7 +106,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="191.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="tYb-iX-i9E">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tYb-iX-i9E">
                                                     <rect key="frame" x="8" y="8" width="304" height="175.5"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="484266837.67504603">
                                                         <!--2016-05-06 22:33:57 +0000-->
@@ -229,6 +229,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2U2-9j-rkY"/>
+        <segue reference="bSS-7k-x1K"/>
     </inferredMetricsTieBreakers>
 </document>

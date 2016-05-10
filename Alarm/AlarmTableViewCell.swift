@@ -14,6 +14,8 @@ class AlarmTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var alarmSwitch: UISwitch!
     
+    weak var delegate: AlarmTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,10 +28,17 @@ class AlarmTableViewCell: UITableViewCell {
     }
     
     @IBAction func switchValueChanged(sender: AnyObject) {
+        delegate?.alarmCellSwitchValueChanged(self)
     }
     
     func updateWithAlarm(alarm: Alarm) {
-        
+        timeLabel.text = alarm.fireTimeAsString
+        nameLabel.text = alarm.name
+        alarmSwitch.on = alarm.enabled
     }
 
+}
+
+protocol AlarmTableViewCellDelegate: class {
+    func alarmCellSwitchValueChanged(cell: AlarmTableViewCell)
 }
