@@ -8,11 +8,11 @@
 
 import UIKit
 
-class AlarmListTableViewController: UITableViewController, AlarmTableViewCellDelegate, AlarmScheduler {
+class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDelegate, AlarmScheduler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -27,7 +27,7 @@ class AlarmListTableViewController: UITableViewController, AlarmTableViewCellDel
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("alarmCell", forIndexPath: indexPath) as? AlarmTableViewCell ?? AlarmTableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("alarmCell", forIndexPath: indexPath) as? SwitchTableViewCell ?? SwitchTableViewCell()
         
         let alarm = AlarmController.sharedInstance.alarms[indexPath.row]
         cell.updateWithAlarm(alarm)
@@ -46,7 +46,7 @@ class AlarmListTableViewController: UITableViewController, AlarmTableViewCellDel
         }
     }
     
-    func alarmCellSwitchValueChanged(cell: AlarmTableViewCell) {
+    func switchCellSwitchValueChanged(cell: SwitchTableViewCell) {
         guard let indexPath = tableView.indexPathForCell(cell) else {return}
         let alarm = AlarmController.sharedInstance.alarms[indexPath.row]
         if alarm.enabled {

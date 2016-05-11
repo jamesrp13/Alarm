@@ -70,7 +70,6 @@ protocol AlarmScheduler {
 extension AlarmScheduler {
     func scheduleLocalNotification(alarm: Alarm) {
         let localNotification = UILocalNotification()
-        localNotification.userInfo = ["alarm": alarm.dictionaryCopy]
         localNotification.alertBody = "Time's up!"
         localNotification.alertTitle = "Time's up!"
         localNotification.fireDate = alarm.fireDate
