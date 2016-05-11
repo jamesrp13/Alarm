@@ -72,6 +72,7 @@ extension AlarmScheduler {
         let localNotification = UILocalNotification()
         localNotification.alertBody = "Time's up!"
         localNotification.alertTitle = "Time's up!"
+        localNotification.category = alarm.uuid
         localNotification.fireDate = alarm.fireDate
         localNotification.repeatInterval = .Day
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
@@ -79,11 +80,10 @@ extension AlarmScheduler {
     
     func cancelLocalNotification(alarm: Alarm) {
         guard let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {return}
-        let localNotificationsForThisAlarm = localNotifications.filter { (notification) -> Bool in
-            return notification.fireDate == alarm.fireDate
-        }
-        for notification in localNotificationsForThisAlarm {
-            UIApplication.sharedApplication().cancelLocalNotification(notification)
+        for notification in localNotifications {
+            if notification.category == alarm.uuid {
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+            }
         }
     }
 }
